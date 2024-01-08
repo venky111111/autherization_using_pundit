@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show CarDetails</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-image: url('https://images.unsplash.com/photo-1517994112540-009c47ea476b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; 
+      height: 100vh;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    table {
+      width: 60%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 15px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      margin-bottom: 5px;
+    }
+
+    h4 {
+      margin-top: 5px;
+      color: #666;
+    }
+
+    button {
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .remove-button {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .back-button {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Show CarDetails</h1>
+  </header>
+
+  <table>
+    <tr>
+      <th>CarsWorld</th>
+    </tr>
+    <tr>
+      <td>
+        <h1><%= @carworld.brand %></h1>
+        <h4>"<%= @carworld.model %>"</h4>
+      </td>
+      <td><%= button_to 'Remove', @carworld, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'remove-button' %></td>
+      <td><%= button_to "Back to Cars", carworlds_path, method: :get, class: 'back-button' %></td>
+    </tr>
+  </table>
+
+  <footer>
+    &copy; 2023 Cars Data App
+  </footer>
+
+</body>
+</html>

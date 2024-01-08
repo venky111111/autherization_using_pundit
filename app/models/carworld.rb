@@ -1,0 +1,2 @@
+class Carworld < ApplicationRecord
+end

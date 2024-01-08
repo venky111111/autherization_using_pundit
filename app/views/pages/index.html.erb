@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Dog App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border:3px solid black;
+    }
+
+    h1 {
+      color: #007bff;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <% if user_signed_in? %>
+    <h1>Welcome Home, <%= current_user.email %></h1>
+    <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class:'btn' %>
+  <% else %>
+    <h1>Welcome To CarWorld </h1>
+    <%= link_to 'Sign in', new_user_session_path, class: 'btn' %>
+  <% end %>
+</div>
+
+</body>
+</html>

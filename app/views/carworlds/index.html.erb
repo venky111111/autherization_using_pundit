@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cars Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      
+     
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: green;
+      padding: 10px;
+      margin-right: 10px;
+    }
+
+    table {
+      width: 90%;
+      margin: 20px auto; /* Center the table horizontally */
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 15px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .edit-button, .remove-button, .add-button {
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .edit-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .remove-button {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .add-button {
+      display: block;
+      margin: 20px auto; /* Center the button horizontally */
+      padding: 10px;
+      background-color: #2196F3;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .add-button-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0; /* Center the button vertically */
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cars Data</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+  </nav>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @carworlds.each do |carworld| %>
+        <tr>
+          <td><%= carworld.brand %></td>
+          <td><%= carworld.model %></td>
+          <td class="action-buttons">
+            <%= button_to 'Edit', edit_carworld_path(carworld), method: 'get', class: 'edit-button' %>
+            <%= button_to 'Remove', carworld_path(carworld), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'remove-button' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+ 
+  <div class="add-button-container">
+    <%= link_to "Add a New CarDetails", new_carworld_path, class: 'add-button' %>
+  </div>
+  
+
+  <footer>
+    &copy; 2023 Cars Data App
+  </footer>
+
+</body>
+</html>

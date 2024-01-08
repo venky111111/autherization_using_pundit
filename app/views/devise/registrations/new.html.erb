@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    .signup-container h2 {
+      color: #4caf50;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .radio-label {
+      margin-right: 15px;
+      color: #333;
+      float:left
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .login-link a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+    #mm{
+      float:left;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Sign Up</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="field " id="mm">
+      <label>Who are you ?</lable><br>
+        <label class="radio-label"><%= f.radio_button :user_type, 'user' %> User</label>
+        <label class="radio-label" ><%= f.radio_button :user_type, 'admin' %> Admin</label><br>
+      </div>
+      <br>
+      <div class="field">
+        <label for="username">Username</label>
+        <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <label for="password_confirmation">Confirm Password</label>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+
+      <div class="login-link">
+        <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
